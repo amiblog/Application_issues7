@@ -1,0 +1,24 @@
+<div class = "container">
+  <h1>Follow Users</h1>
+  <% if @users.any?%>
+    <div class = "row">
+      <table class = "table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user|%>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  <%else%>
+  <p>ユーザーはいません</p>
+  <%end%>
+</div>
