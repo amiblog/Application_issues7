@@ -1,0 +1,22 @@
+<div class = "container">
+  <div class = "row">
+    <table class = "table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Introduction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each do |user|%>
+        <tr>
+          <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+          <td><%= user.name%></td>
+          <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
