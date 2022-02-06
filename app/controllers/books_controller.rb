@@ -10,7 +10,8 @@ class BooksController < ApplicationController
   def index
     @book_comment = BookComment.new
     @book = Book.new
-    @books = Book.all
+    @q = Book.ransack(params[:q])
+    @books = @q.result
   end
 
   def create
