@@ -11,20 +11,28 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
+    @q = Book.ransack(params[:q])
+    @books = @q.result
   end
 
   def followings
     user = User.find(params[:id])
     @users = user.followings
+    @q = Book.ransack(params[:q])
+    @books = @q.result
   end
 
   def followers
     user = User.find(params[:id])
     @users = user.followers
+    @q = Book.ransack(params[:q])
+    @books = @q.result
   end
 
   def edit
     @user = User.find(params[:id])
+    @q = Book.ransack(params[:q])
+    @books = @q.result
   end
 
   def update

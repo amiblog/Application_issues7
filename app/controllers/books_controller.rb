@@ -5,6 +5,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
+    @q = Book.ransack(params[:q])
+    @books = @q.result
   end
 
   def index
@@ -26,6 +28,8 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @q = Book.ransack(params[:q])
+    @books = @q.result
     @book = Book.find(params[:id])
     if @book.user == current_user
       render :edit
@@ -52,6 +56,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :rate)
+    params.require(:book).permit(:title, :body, :category, :rate)
   end
 end
